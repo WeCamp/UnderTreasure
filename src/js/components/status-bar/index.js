@@ -1,8 +1,12 @@
 import template from './template.html';
+import Timer from '../timer';
 
 export default {
     name: 'status-bar',
     template,
+    components: {
+        Timer
+    },
     vuex: {
         getters: {
             user: function (state) {
