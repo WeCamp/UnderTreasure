@@ -47,6 +47,7 @@
     "vue-html-loader": "^1.2.2",
     "vue-loader": "^8.3.1",
     "vue-style-loader": "^1.0.0",
+    "vuex": "^1.0.0-rc.2",
     "waypoints": "^4.0.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
