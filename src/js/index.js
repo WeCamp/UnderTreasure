@@ -25,8 +25,10 @@ var vm = new Vue({
         },
         methods: {
             _setCurrentLocation() {
+                let self = this;
                 navigator.geolocation.watchPosition(function (geoPosition) {
                     store.dispatch('SETCURRENTPOSITION', geoPosition);
+                    self._checkNearBy(geoPosition);
                 }, function () {
 
                 }, {
@@ -48,6 +50,39 @@ var vm = new Vue({
                 ].forEach((data) => {
                     store.dispatch('ADDCOIN', new Coin(data[0], data[1]));
                 })
+            },
+            _checkNearBy(geoPosition) {
+                console.log('_checkNearBy is triggered');
+                var userLat = geoPosition.coords.latitude;
+                var userLong = geoPosition.coords.longitude;
+
+                var coins = this.coins;
+
+                coins.forEach((function(value, index) {
+                    console.log(value);
+                }));
+
+                coins.filter();
+                // todo: implement filter with distance function
+//                 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
+//
+//  var R = 6371; // Radius of the earth in km
+//  var dLat = deg2rad(lat2-lat1);  // deg2rad below
+//  var dLon = deg2rad(lon2-lon1);
+//  var a =
+//    Math.sin(dLat/2) * Math.sin(dLat/2) +
+//    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
+//    Math.sin(dLon/2) * Math.sin(dLon/2)
+//    ;
+//  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+//  var d = R * c; // Distance in km
+//  return d;
+// }
+//
+// function deg2rad(deg) {
+//  return deg * (Math.PI/180)
+// }
+
             }
         },
         components: {
