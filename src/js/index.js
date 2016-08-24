@@ -14,7 +14,7 @@ var vm = new Vue({
         el: 'body',
         store,
         components: {
-            'map': PirateMap
+            PirateMap
         }
     }
 );

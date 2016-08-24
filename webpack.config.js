@@ -14,7 +14,7 @@ module.exports = {
   context: path.join(__dirname, 'src'),
 
   entry: {
-    'underPressure': './index.js',
+    'underPressure': './js/index.js',
   },
 
   output: {
