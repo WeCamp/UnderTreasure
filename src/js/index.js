@@ -16,9 +16,21 @@ load({
 var vm = new Vue({
         el: 'body',
         store,
+        created() {
+            navigator.geolocation.getCurrentPosition(function(geoPosition) {
+                store.dispatch('SETCURRENTPOSITION', geoPosition);
+            });
+        },
         components: {
             StatusBar,
             PirateMap
+        },
+        vuex: {
+            getters: {
+                user: function (state) {
+                    return state.user
+                }
+            }
         }
     }
 );
