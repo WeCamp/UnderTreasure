@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import store from './vuex/store';
+import {calculateDistance} from './vuex/actions.js'
 
 import {load, Marker} from 'vue-google-maps';
 
@@ -20,13 +21,16 @@ var vm = new Vue({
         el: 'body',
         store,
         created() {
-            this._setCurrentLocation();
             this._distributeCoins();
+            this._setCurrentLocation();
         },
         methods: {
             _setCurrentLocation() {
+
+                console.log(this.calculateDistance());
                 navigator.geolocation.watchPosition(function (geoPosition) {
                     store.dispatch('SETCURRENTPOSITION', geoPosition);
+                    //this.calculateDistance();
                 }, function () {
 
                 }, {
@@ -63,6 +67,9 @@ var vm = new Vue({
                 coins: function (state) {
                     return state.coins
                 }
+            },
+            actions: {
+                calculateDistance
             }
         }
     }
