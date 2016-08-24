@@ -14,7 +14,7 @@ module.exports = {
   context: path.join(__dirname, 'src'),
 
   entry: {
-    'underPressure': './js/index.js',
+    'underPressure': './js',
   },
 
   output: {
@@ -30,11 +30,16 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /(node_modules)/
       },
-      //{
-      //  test: /\.styl$/,
-      //  loader: ExtractTextPlugin.extract("style-loader", "css-loader!stylus-loader"),
-      //  exclude: /(node_modules)/
-      //},
+      {
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader"),
+        exclude: /(node_modules)/
+      },
+      {
+        test: /\.less$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader"),
+        exclude: /(node_modules)/
+      },
       {
         test: /\.html$/,
         loader: 'html'
@@ -52,17 +57,12 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanPlugin(['dist/css', 'dist/fonts', 'dist/images', 'dist/js']),
-    new ExtractTextPlugin('css/[name].css', { allChunks: false }),
+    //new CleanPlugin(['dist/css', 'dist/fonts', 'dist/images', 'dist/js']),
+    new ExtractTextPlugin('css/[name].css',{allChunks: true}),
     new webpack.DefinePlugin({
       'process.env': { NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development') }
     })
   ],
-
-  resolve: {
-    extensions: ['', '.js', '.json', '.vue'],
-  },
-
   devServer: {
     contentBase: './src',
   }

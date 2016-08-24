@@ -3,6 +3,9 @@ import store from './vuex/store';
 
 import {load, Marker} from 'vue-google-maps';
 import PirateMap from './components/pirate-map';
+import StatusBar from './components/status-bar';
+
+require("../less/index.less");
 
 load({
     key: 'AIzaSyCN0ZimaGFwUTzz9GYQCEI2oVF85KQuQf0',
@@ -14,6 +17,7 @@ var vm = new Vue({
         el: 'body',
         store,
         components: {
+            StatusBar,
             PirateMap
         }
     }
