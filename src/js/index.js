@@ -19,6 +19,10 @@ var vm = new Vue({
         created() {
             navigator.geolocation.watchPosition(function(geoPosition) {
                 store.dispatch('SETCURRENTPOSITION', geoPosition);
+            }, function() {
+
+            }, {
+                enableHighAccuracy: true
             });
         },
         components: {
