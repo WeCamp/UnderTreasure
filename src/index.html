@@ -7,9 +7,15 @@
     <div class="position-marker"></div>
     <pirate-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
               :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
-              :zoom.sync="22"
+              :zoom.sync="17"
               :options="{draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true}"
     >
+      <marker
+              v-for="coin in coins"
+              :position="coin.position"
+              :clickable="false"
+              :draggable="false"
+      ></marker>
     </pirate-map>
     <script src="/js/underPressure.js"></script>
   </body>

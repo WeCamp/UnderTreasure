@@ -7,13 +7,17 @@ Vue.use(Vuex);
 
 const state = {
     user: new User(),
+    coins: []
 };
 
 const mutations = {
     SETCURRENTPOSITION (state, geolocation) {
         state.user.position = geolocation;
+    },
+    ADDCOIN (state, coin) {
+        state.coins.push(coin);
     }
-}
+};
 
 export default new Vuex.Store({
     state,
