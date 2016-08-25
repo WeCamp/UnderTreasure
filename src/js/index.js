@@ -22,21 +22,12 @@ var vm = new Vue({
         store,
         created() {
             this._distributeCoins();
-            this._setCurrentLocation();
+            this.updatePosition(
+                this._checkNearBy.bind()
+            );
             store.dispatch('GAMESTART');
         },
         methods: {
-            _setCurrentLocation() {
-                let self = this;
-                navigator.geolocation.watchPosition(function (geoPosition) {
-                    store.dispatch('SETCURRENTPOSITION', geoPosition);
-                    self._checkNearBy(geoPosition);
-                }, function () {
-
-                }, {
-                    enableHighAccuracy: true
-                });
-            },
             _distributeCoins() {
                 [
                     [52.371835, 5.632959],
@@ -54,7 +45,7 @@ var vm = new Vue({
                     store.dispatch('ADDCOIN', coin);
                 })
             },
-            _checkNearBy(geoPosition) {
+            _checkNearBy(geoPosition, grabCoin) {
                 let userLat = geoPosition.coords.latitude;
                 let userLong = geoPosition.coords.longitude;
 
@@ -68,7 +59,7 @@ var vm = new Vue({
                     return distanceToCoin < 13;
                 });
                 coins.forEach((coin) => {
-                    store.dispatch('GRABCOIN', coin);
+                    this.grabCoin(coin);
                 });
             }
         },
@@ -87,7 +78,23 @@ var vm = new Vue({
                 }
             },
             actions: {
-                //calculateDistance
+                updatePosition: function ({ dispatch, state }, checkNearBy) {
+                    navigator.geolocation.watchPosition(function (geoPosition) {
+                        dispatch('SETCURRENTPOSITION', geoPosition);
+                        checkNearBy(geoPosition);
+
+                    }, function () {
+
+                    }, {
+                        enableHighAccuracy: true
+                    });
+                },
+                grabCoin: function({ dispatch, state }, coin) {
+                    dispatch('GRABCOIN', coin);
+                    if (state.coins.length == 0) {
+                        dispatch('GAMESTOP');
+                    }
+                }
             }
         }
     }
