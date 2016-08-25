@@ -13,6 +13,18 @@
     :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
     :zoom.sync="20"
     :options=""
+    :styles='[{
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#000000"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    }]'
     >
       <marker
         v-for="coin in coins"
@@ -25,12 +37,13 @@
       <ground-overlay
               source="./images/map-overlay.png"
               :bounds="{
-                  north: 52.37231863518749,
-                  south: 52.371827363446435,
-                  east: 5.635842467021007,
-                  west: 5.63395553297903
+                  north: 52.37413,
+                  south: 52.37113,
+                  east: 5.63790,
+                  west: 5.63225
               }"
-              :opacity="0.5"
+
+              :opacity="1"
       >
       </ground-overlay>
 
