@@ -3,46 +3,63 @@ import template from './template.html';
 export default {
 	name: 'timer',
 	template,
+	data() {
+		return {
+			seconds:0
+		}
+	},
 	created() {
 		this.start()
 	},
 	computed: {
 		timeValue: function () {
-			if (this.seconds >= 60) {
-				this.seconds = 0;
-				this.minutes++;
-				if (this.minutes >= 60) {
-					this.minutes = 0;
-					this.hours++;
+			console.info(this.seconds);
+			let seconds = this.seconds
+			let minutes = 0;
+			let hours = 0;
+			if (seconds >= 60) {
+				seconds = seconds % 60;
+				minutes++;
+				if (minutes >= 60) {
+					minutes = minutes % 60;
+					hours++;
 				}
 			}
-
-			return this.hours + ':' + this.minutes +  ':' + this.seconds;
+			return self.builtTimeView(hours, minutes, seconds);
 		}
 	},
 	methods: {
-		start() {
+		/**
+		 * Control timer
+		 */
+		reset() {
+			let self = this;
+			clearInterval(self.watcher);
 			this.seconds = 0;
-			this.minutes = 0;
-			this.hours = 0;
-
-			this.watcher = setTimeout(this.update, 1000);
+			this.start();
+		},
+		start() {
+			let self = this;
+			this.seconds = 0;
+			self.watcher = setInterval(function() {self.update()}, 1000);
 		},
 		stop(){
-			console.info('T');
-			clearTimeout(this.watcher);
+			let self = this;
+			clearInterval(self.watcher);
 		},
 		update(){
-			console.info(this.seconds);
+			let self = this;
 			this.seconds++;
+		},
+
+		/**
+		 * Show full timer
+		 */
+		builtTimeView(hours, minutes, seconds){
+			return (hours < 9 ? '0' + hours :  hours) + ':' +
+				(minutes < 9 ? '0' + minutes :  minutes) + ':' +
+				(seconds < 9 ? '0' + seconds :  seconds);
 		}
 	}
 
-	// vuex: {
-	// 	getters: {
-	// 		user: function (state) {
-	// 			return state.user
-	// 		}
-	// 	}
-	// }
 }
