@@ -7,6 +7,9 @@ export default {
         getters: {
             user: function (state) {
                 return state.user
+            },
+            amountCoinsPlaced: function (state) {
+                return state.amountCoinsPlaced
             }
         }
     }
