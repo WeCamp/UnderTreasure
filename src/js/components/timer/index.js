@@ -61,9 +61,9 @@ export default {
 		 * @returns {string}
 		 */
 		builtTimeView(hours, minutes, seconds){
-			return (hours < 9 ? '0' + hours :  hours) + ':' +
-				(minutes < 9 ? '0' + minutes :  minutes) + ':' +
-				(seconds < 9 ? '0' + seconds :  seconds);
+			return (hours <= 9 ? '0' + hours :  hours) + ':' +
+				(minutes <= 9 ? '0' + minutes :  minutes) + ':' +
+				(seconds <= 9 ? '0' + seconds :  seconds);
 		}
 	}
 }
