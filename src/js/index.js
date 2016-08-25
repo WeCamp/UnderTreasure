@@ -26,8 +26,6 @@ var vm = new Vue({
         },
         methods: {
             _setCurrentLocation() {
-
-                console.log(this.calculateDistance());
                 navigator.geolocation.watchPosition(function (geoPosition) {
                     store.dispatch('SETCURRENTPOSITION', geoPosition);
                     //this.calculateDistance();
@@ -69,7 +67,7 @@ var vm = new Vue({
                 }
             },
             actions: {
-                calculateDistance
+                //calculateDistance
             }
         }
     }
