@@ -52,7 +52,11 @@ export default {
 		},
 
 		/**
-		 * Show full timer
+		 * 
+		 * @param hours
+		 * @param minutes
+		 * @param seconds
+		 * @returns {string}
 		 */
 		builtTimeView(hours, minutes, seconds){
 			return (hours < 9 ? '0' + hours :  hours) + ':' +
