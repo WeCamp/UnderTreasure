@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 const state = {
     user: new User(),
-    coins: []
+    coins: [],
 };
 
 const mutations = {
@@ -16,7 +16,7 @@ const mutations = {
     },
     ADDCOIN (state, coin) {
         state.coins.push(coin);
-    }
+    },
 };
 
 export default new Vuex.Store({
