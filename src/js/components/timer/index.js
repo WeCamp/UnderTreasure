@@ -52,7 +52,7 @@ export default {
 		},
 
 		/**
-		 * 
+		 * Build time view
 		 * @param hours
 		 * @param minutes
 		 * @param seconds
