@@ -5,7 +5,6 @@ import {calculateDistance} from './vuex/actions.js'
 import {load, Marker} from 'vue-google-maps';
 
 import Coin from './objects/coin.js';
-import distance from './libs/distance';
 
 import PirateMap from './components/pirate-map';
 import StatusBar from './components/status-bar';
@@ -31,11 +30,7 @@ var vm = new Vue({
                 let self = this;
                 navigator.geolocation.watchPosition(function (geoPosition) {
                     store.dispatch('SETCURRENTPOSITION', geoPosition);
-<<<<<<< HEAD
-                    //this.calculateDistance();
-=======
                     self._checkNearBy(geoPosition);
->>>>>>> master
                 }, function () {
 
                 }, {
@@ -64,7 +59,7 @@ var vm = new Vue({
                 let userLong = geoPosition.coords.longitude;
 
                 let coins = _.filter(this.coins, function(coin) {
-                    let distanceToCoin = distance(
+                    let distanceToCoin = calculateDistance(
                         userLat,
                         userLong,
                         coin.position.lat,
@@ -72,9 +67,9 @@ var vm = new Vue({
                     );
                     return distanceToCoin < 13;
                 });
-                if (coins.length > 0) {
-                    store.dispatch('GRABCOIN', {'coins': coins});
-                }
+                coins.forEach((coin) => {
+                    store.dispatch('GRABCOIN', coin);
+                });
             }
         },
         components: {
