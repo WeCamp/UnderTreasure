@@ -2,12 +2,13 @@ import Vue from 'vue';
 import store from './vuex/store';
 import {calculateDistance} from './vuex/actions.js'
 
-import {load, Marker} from 'vue-google-maps';
+import {load, Map, Marker} from 'vue-google-maps';
 
 import Coin from './objects/coin.js';
 
-import PirateMap from './components/pirate-map';
+import {map as PirateMap, GroundOverlay} from './components/pirate-map';
 import StatusBar from './components/status-bar';
+
 
 require("../less/index.less");
 
@@ -20,7 +21,16 @@ load({
 var vm = new Vue({
         el: 'body',
         store,
+        data() {
+          return {
+              tents: [
+                  {lat: 52.371735, lng: 5.633959},
+              ]
+          };
+
+        },
         created() {
+            this._applyMapOverlay();
             this._distributeCoins();
             this.updatePosition(
                 this._checkNearBy.bind()
@@ -61,12 +71,17 @@ var vm = new Vue({
                 coins.forEach((coin) => {
                     this.grabCoin(coin);
                 });
+            },
+            
+            _applyMapOverlay: function() {
+
             }
         },
         components: {
             StatusBar,
-            PirateMap,
-            Marker
+            'pirate-map': Map,
+            Marker,
+            GroundOverlay
         },
         vuex: {
             getters: {
