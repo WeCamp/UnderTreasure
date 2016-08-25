@@ -8,6 +8,7 @@ Vue.use(Vuex);
 const state = {
     user: new User(),
     coins: [],
+    gameState: 'INITIAL' // INITIAL | RUNNING | END
 };
 
 const mutations = {
@@ -17,6 +18,17 @@ const mutations = {
     ADDCOIN (state, coin) {
         state.coins.push(coin);
     },
+    GRABCOIN (state, coin) {
+        let i = state.coins.indexOf(coin);
+        state.coins.splice(i,1);
+        state.user.coins.push(coin);
+    },
+    GAMESTART (state) {
+        state.gameState = 'RUNNING';
+    },
+    GAMESTOP (state) {
+        state.gameState = 'END';
+    }
 };
 
 export default new Vuex.Store({
