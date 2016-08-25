@@ -3,19 +3,36 @@
     <link href="/css/underPressure.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <!-- Header -->
     <status-bar></status-bar>
     <div class="position-marker"></div>
+
+    <!-- Map -->
     <pirate-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
-              :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
-              :zoom.sync="17"
-              :options="{draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true}"
+    :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
+    :zoom.sync="17"
+    :options="{draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true}"
     >
       <marker
-              v-for="coin in coins"
-              :position.sync="coin.position"
-              :clickable.sync="false"
-              :draggable.sync="false"
+        v-for="coin in coins"
+        :position.sync="coin.position"
+        :clickable.sync="false"
+        :draggable.sync="false"
       ></marker>
+
+
+      <ground-overlay
+              source="./images/map-overlay.png"
+              :bounds="{
+                  north: 52.37403804325011,
+                  south: 52.3701078693212,
+                  east: 5.642446736167926,
+                  west: 5.627351263832111
+              }"
+              :opacity="1"
+      >
+      </ground-overlay>
+
     </pirate-map>
     <script src="/js/underPressure.js"></script>
   </body>
