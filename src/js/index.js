@@ -23,6 +23,7 @@ var vm = new Vue({
         created() {
             this._distributeCoins();
             this._setCurrentLocation();
+            store.dispatch('GAMESTART');
         },
         methods: {
             _setCurrentLocation() {
@@ -48,7 +49,8 @@ var vm = new Vue({
                     [52.372926, 5.635324],
                     [52.371662, 5.634895]
                 ].forEach((data) => {
-                    store.dispatch('ADDCOIN', new Coin(data[0], data[1]));
+                    let coin = new Coin(data[0], data[1]);
+                    store.dispatch('ADDCOIN', coin);
                 })
             }
         },

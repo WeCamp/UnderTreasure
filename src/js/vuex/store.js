@@ -7,7 +7,8 @@ Vue.use(Vuex);
 
 const state = {
     user: new User(),
-    coins: []
+    coins: [],
+    gameState: 'INITIAL' // INITIAL | RUNNING | END
 };
 
 const mutations = {
@@ -18,9 +19,15 @@ const mutations = {
         state.coins.push(coin);
     },
     GRABCOIN (state, coin) {
-        console.log('You grabbed 1 coin');
         let i = state.coins.indexOf(coin);
-        delete state.coins[i];
+        state.coins.splice(i,1);
+        state.user.coins.push(coin);
+    },
+    GAMESTART (state) {
+        state.gameState = 'RUNNING';
+    },
+    GAMESTOP (state) {
+        state.gameState = 'END';
     }
 };
 
