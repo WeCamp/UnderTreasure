@@ -10,10 +10,13 @@
     <!--{draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true}-->
     <!-- Map -->
     <pirate-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
-    :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
-    :zoom.sync="20"
-    :options=""
-    :styles='[{
+      :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
+      :zoom.sync="20"
+      :options="{draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true, streetViewControl: false}">
+      :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
+      :zoom.sync="20"
+      :options=""
+      :styles='[{
         "featureType": "water",
         "elementType": "geometry",
         "stylers": [
@@ -24,7 +27,7 @@
                 "lightness": 20
             }
         ]
-    }]'
+      }]'
     >
       <marker
         v-for="coin in coins"
