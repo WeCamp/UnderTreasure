@@ -4,6 +4,7 @@ import store from './vuex/store';
 import {load, Marker} from 'vue-google-maps';
 
 import Coin from './objects/coin.js';
+import distance from './libs/distance';
 
 import PirateMap from './components/pirate-map';
 import StatusBar from './components/status-bar';
@@ -52,36 +53,21 @@ var vm = new Vue({
                 })
             },
             _checkNearBy(geoPosition) {
-                console.log('_checkNearBy is triggered');
                 var userLat = geoPosition.coords.latitude;
                 var userLong = geoPosition.coords.longitude;
 
-                var coins = this.coins;
-
-                coins.forEach((function(value, index) {
-                    console.log(value);
-                }));
-
-                coins.filter();
-                // todo: implement filter with distance function
-//                 function getDistanceFromLatLonInKm(lat1,lon1,lat2,lon2) {
-//
-//  var R = 6371; // Radius of the earth in km
-//  var dLat = deg2rad(lat2-lat1);  // deg2rad below
-//  var dLon = deg2rad(lon2-lon1);
-//  var a =
-//    Math.sin(dLat/2) * Math.sin(dLat/2) +
-//    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) *
-//    Math.sin(dLon/2) * Math.sin(dLon/2)
-//    ;
-//  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-//  var d = R * c; // Distance in km
-//  return d;
-// }
-//
-// function deg2rad(deg) {
-//  return deg * (Math.PI/180)
-// }
+                var coins = _.filter(this.coins, function(coin) {
+                    var distanceToCoin = distance(
+                        userLat,
+                        userLong,
+                        coin.position.lat,
+                        coin.position.lng
+                    );
+                    return distanceToCoin < 13;
+                });
+                if (coins.length > 0) {
+                    store.dispatch('GRABCOIN', {'coins': coins});
+                }
 
             }
         },
