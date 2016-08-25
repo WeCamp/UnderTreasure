@@ -5,6 +5,7 @@ import {calculateDistance} from './vuex/actions.js'
 import {load, Marker} from 'vue-google-maps';
 
 import Coin from './objects/coin.js';
+import distance from './libs/distance';
 
 import PirateMap from './components/pirate-map';
 import StatusBar from './components/status-bar';
@@ -15,7 +16,7 @@ load({
     key: 'AIzaSyCN0ZimaGFwUTzz9GYQCEI2oVF85KQuQf0',
     v: '3.24',                // Google Maps API version
     // libraries: 'places',   // If you want to use places input
-})
+});
 
 var vm = new Vue({
         el: 'body',
@@ -27,9 +28,14 @@ var vm = new Vue({
         },
         methods: {
             _setCurrentLocation() {
+                let self = this;
                 navigator.geolocation.watchPosition(function (geoPosition) {
                     store.dispatch('SETCURRENTPOSITION', geoPosition);
+<<<<<<< HEAD
                     //this.calculateDistance();
+=======
+                    self._checkNearBy(geoPosition);
+>>>>>>> master
                 }, function () {
 
                 }, {
@@ -52,6 +58,23 @@ var vm = new Vue({
                     let coin = new Coin(data[0], data[1]);
                     store.dispatch('ADDCOIN', coin);
                 })
+            },
+            _checkNearBy(geoPosition) {
+                let userLat = geoPosition.coords.latitude;
+                let userLong = geoPosition.coords.longitude;
+
+                let coins = _.filter(this.coins, function(coin) {
+                    let distanceToCoin = distance(
+                        userLat,
+                        userLong,
+                        coin.position.lat,
+                        coin.position.lng
+                    );
+                    return distanceToCoin < 13;
+                });
+                if (coins.length > 0) {
+                    store.dispatch('GRABCOIN', {'coins': coins});
+                }
             }
         },
         components: {
