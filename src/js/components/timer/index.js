@@ -13,8 +13,7 @@ export default {
 	},
 	computed: {
 		timeValue: function () {
-			console.info(this.seconds);
-			let seconds = this.seconds
+			let seconds = this.seconds;
 			let minutes = 0;
 			let hours = 0;
 			if (seconds >= 60) {
@@ -25,7 +24,7 @@ export default {
 					hours++;
 				}
 			}
-			return self.builtTimeView(hours, minutes, seconds);
+			return this.builtTimeView(hours, minutes, seconds);
 		}
 	},
 	methods: {
