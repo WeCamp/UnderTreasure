@@ -3,7 +3,8 @@
     <link href="/css/underPressure.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
-    <status-bar></status-bar>
+    <game-end></game-end>
+    <status-bar v-ref:statusbar></status-bar>
     <div class="position-marker"></div>
     <pirate-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
               :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"

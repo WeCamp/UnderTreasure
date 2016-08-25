@@ -8,6 +8,7 @@ import Coin from './objects/coin.js';
 
 import PirateMap from './components/pirate-map';
 import StatusBar from './components/status-bar';
+import GameEnd from './components/game-end';
 
 require("../less/index.less");
 
@@ -31,15 +32,15 @@ var vm = new Vue({
             _distributeCoins() {
                 [
                     [52.371835, 5.632959],
-                    [52.371762, 5.634245],
-                    [52.372219, 5.634683],
-                    [52.372586, 5.634458],
-                    [52.372219, 5.635045],
-                    [52.372992, 5.635206],
-                    [52.372461, 5.634809],
-                    [52.372199, 5.635227],
-                    [52.372926, 5.635324],
-                    [52.371662, 5.634895]
+                    //[52.371762, 5.634245],
+                    //[52.372219, 5.634683],
+                    //[52.372586, 5.634458],
+                    //[52.372219, 5.635045],
+                    //[52.372992, 5.635206],
+                    //[52.372461, 5.634809],
+                    //[52.372199, 5.635227],
+                    //[52.372926, 5.635324],
+                    //[52.371662, 5.634895]
                 ].forEach((data) => {
                     let coin = new Coin(data[0], data[1]);
                     store.dispatch('ADDCOIN', coin);
@@ -66,7 +67,8 @@ var vm = new Vue({
         components: {
             StatusBar,
             PirateMap,
-            Marker
+            Marker,
+            GameEnd,
         },
         vuex: {
             getters: {
@@ -92,7 +94,7 @@ var vm = new Vue({
                 grabCoin: function({ dispatch, state }, coin) {
                     dispatch('GRABCOIN', coin);
                     if (state.coins.length == 0) {
-                        dispatch('GAMESTOP');
+                        dispatch('GAMESTOP', this.$refs.statusbar.$refs.timer.timeValue);
                     }
                 }
             }
