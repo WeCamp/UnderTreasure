@@ -15,6 +15,11 @@ export default {
             }
         }
     },
+    methods: {
+        restartGame: function () {
+            window.location.reload(true);
+        }
+    },
     computed: {
         show() {
             return true;

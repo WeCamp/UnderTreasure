@@ -1,3 +1,4 @@
-<div class="gameend" v-if="show">
+<div class="gameend" v-if="show" style="position: absolute; z-index: 10000">
     {{ timeValue }}
+    <button @click="restartGame()">Restart</button>
 </div>
