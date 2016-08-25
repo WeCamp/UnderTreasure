@@ -12,9 +12,9 @@
     >
       <marker
               v-for="coin in coins"
-              :position="coin.position"
-              :clickable="false"
-              :draggable="false"
+              :position.sync="coin.position"
+              :clickable.sync="false"
+              :draggable.sync="false"
       ></marker>
     </pirate-map>
     <script src="/js/underPressure.js"></script>

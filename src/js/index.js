@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import store from './vuex/store';
+import {calculateDistance} from './vuex/actions.js'
 
 import {load, Marker} from 'vue-google-maps';
 
 import Coin from './objects/coin.js';
-import distance from './libs/distance';
 
 import PirateMap from './components/pirate-map';
 import StatusBar from './components/status-bar';
@@ -21,8 +21,9 @@ var vm = new Vue({
         el: 'body',
         store,
         created() {
-            this._setCurrentLocation();
             this._distributeCoins();
+            this._setCurrentLocation();
+            store.dispatch('GAMESTART');
         },
         methods: {
             _setCurrentLocation() {
@@ -49,7 +50,8 @@ var vm = new Vue({
                     [52.372926, 5.635324],
                     [52.371662, 5.634895]
                 ].forEach((data) => {
-                    store.dispatch('ADDCOIN', new Coin(data[0], data[1]));
+                    let coin = new Coin(data[0], data[1]);
+                    store.dispatch('ADDCOIN', coin);
                 })
             },
             _checkNearBy(geoPosition) {
@@ -57,7 +59,7 @@ var vm = new Vue({
                 let userLong = geoPosition.coords.longitude;
 
                 let coins = _.filter(this.coins, function(coin) {
-                    let distanceToCoin = distance(
+                    let distanceToCoin = calculateDistance(
                         userLat,
                         userLong,
                         coin.position.lat,
@@ -65,9 +67,9 @@ var vm = new Vue({
                     );
                     return distanceToCoin < 13;
                 });
-                if (coins.length > 0) {
-                    store.dispatch('GRABCOIN', {'coins': coins});
-                }
+                coins.forEach((coin) => {
+                    store.dispatch('GRABCOIN', coin);
+                });
             }
         },
         components: {
@@ -83,6 +85,9 @@ var vm = new Vue({
                 coins: function (state) {
                     return state.coins
                 }
+            },
+            actions: {
+                //calculateDistance
             }
         }
     }
