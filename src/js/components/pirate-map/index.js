@@ -7,8 +7,8 @@ export const GroundOverlay = Vue.component('ground-overlay', MapComponent.extend
     template: '',
     props: ['source', 'bounds', 'opacity'],
     deferredReady: function() {
-        console.log(this.source);
-        console.log(this.bounds);
+        // console.log(this.source);
+        // console.log(this.bounds);
         this.$overlay = new google.maps.GroundOverlay(
             this.source,
             this.bounds
