@@ -1,5 +1,9 @@
 <div class="statusbar">
-    <timer class="timer" v-ref:timer></timer>
-    <div class="totals">{{ user.coins.length }} / {{ amountCoinsPlaced }}</div>
-    <!--<h1>{{ user.position.coords.latitude }} {{ user.position.coords.longitude }}</h1>-->
+    <div class="icon"></div>
+    <div class="time">
+        <timer class="timer" v-ref:timer></timer>
+    </div>
+    <div class="totals">
+        {{ user.coins.length }} / {{ amountCoinsPlaced }}
+    </div>
 </div>
