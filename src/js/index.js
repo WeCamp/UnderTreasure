@@ -15,7 +15,7 @@ load({
     key: 'AIzaSyCN0ZimaGFwUTzz9GYQCEI2oVF85KQuQf0',
     v: '3.24',                // Google Maps API version
     // libraries: 'places',   // If you want to use places input
-})
+});
 
 var vm = new Vue({
         el: 'body',
@@ -53,11 +53,11 @@ var vm = new Vue({
                 })
             },
             _checkNearBy(geoPosition) {
-                var userLat = geoPosition.coords.latitude;
-                var userLong = geoPosition.coords.longitude;
+                let userLat = geoPosition.coords.latitude;
+                let userLong = geoPosition.coords.longitude;
 
-                var coins = _.filter(this.coins, function(coin) {
-                    var distanceToCoin = distance(
+                let coins = _.filter(this.coins, function(coin) {
+                    let distanceToCoin = distance(
                         userLat,
                         userLong,
                         coin.position.lat,
@@ -68,7 +68,6 @@ var vm = new Vue({
                 if (coins.length > 0) {
                     store.dispatch('GRABCOIN', {'coins': coins});
                 }
-
             }
         },
         components: {

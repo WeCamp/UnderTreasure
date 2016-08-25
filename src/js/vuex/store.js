@@ -8,7 +8,6 @@ Vue.use(Vuex);
 const state = {
     user: new User(),
     coins: [],
-
 };
 
 const mutations = {
