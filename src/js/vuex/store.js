@@ -16,6 +16,11 @@ const mutations = {
     },
     ADDCOIN (state, coin) {
         state.coins.push(coin);
+    },
+    GRABCOIN (state, coin) {
+        console.log('You grabbed 1 coin');
+        let i = state.coins.indexOf(coin);
+        delete state.coins[i];
     }
 };
 
