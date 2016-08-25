@@ -7,6 +7,7 @@ Vue.use(Vuex);
 
 const state = {
     user: new User(),
+    amountCoinsPlaced: 0,
     coins: [],
     gameState: 'INITIAL' // INITIAL | RUNNING | END
 };
@@ -17,6 +18,7 @@ const mutations = {
     },
     ADDCOIN (state, coin) {
         state.coins.push(coin);
+        state.amountCoinsPlaced++;
     },
     GRABCOIN (state, coin) {
         let i = state.coins.indexOf(coin);
