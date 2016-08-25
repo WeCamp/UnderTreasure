@@ -1,39 +1,40 @@
 <html>
-  <head>
-    <link href="/css/underPressure.css" rel="stylesheet" type="text/css" />
-  </head>
-  <body>
+<head>
+    <link href="/css/underPressure.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
     <!-- Header -->
     <status-bar></status-bar>
     <div class="position-marker"></div>
 
-    <!--{draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true}-->
     <!-- Map -->
     <pirate-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
+
       :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
       :zoom.sync="20"
       :options="{draggable: true, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true, streetViewControl: false}">
-      :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
-      :zoom.sync="20"
-      :options=""
-      :styles='[{
-        "featureType": "water",
-        "elementType": "geometry",
-        "stylers": [
-            {
-                "color": "#000000"
-            },
-            {
-                "lightness": 20
-            }
-        ]
-      }]'
-    >
+      <!--:center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"-->
+      <!--:zoom.sync="20"-->
+      <!--:options=""-->
+      <!--:styles='[{-->
+        <!--"featureType": "water",-->
+        <!--"elementType": "geometry",-->
+        <!--"stylers": [-->
+            <!--{-->
+                <!--"color": "#000000"-->
+            <!--},-->
+            <!--{-->
+                <!--"lightness": 20-->
+            <!--}-->
+        <!--]-->
+      <!--}]'-->
+    <!--&gt;-->
       <marker
         v-for="coin in coins"
         :position.sync="coin.position"
         :clickable.sync="false"
         :draggable.sync="false"
+        :icon.sync="{url: '/images/pirate-coin.png'}"
       ></marker>
       <marker
               v-for="tent in tents"
@@ -41,21 +42,20 @@
               :clickable.sync="false"
               :draggable.sync="false"
       ></marker>
-
-      <ground-overlay
-              source="./images/map-overlay.png"
-              :bounds="{
+        <ground-overlay
+            source="./images/map-overlay.png"
+            :bounds="{
                   north: 52.37413,
                   south: 52.37113,
                   east: 5.63790,
                   west: 5.63225
               }"
+            :opacity="1"
+        >
+        </ground-overlay>
 
-              :opacity="1"
-      >
-      </ground-overlay>
 
     </pirate-map>
     <script src="/js/underPressure.js"></script>
-  </body>
+</body>
 </html>
