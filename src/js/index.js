@@ -21,6 +21,14 @@ load({
 var vm = new Vue({
         el: 'body',
         store,
+        data() {
+          return {
+              tents: [
+                  {lat: 52.371735, lng: 5.633959},
+              ]
+          };
+
+        },
         created() {
             this._applyMapOverlay();
             this._distributeCoins();
