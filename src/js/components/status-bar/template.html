@@ -4,6 +4,8 @@
         <timer class="timer" v-ref:timer></timer>
     </div>
     <div class="totals">
-        {{ user.coins.length }} / {{ amountCoinsPlaced }}
+        <span class="collectedCoins">{{ user.coins.length }}</span>
+        <span class="separator">/</span>
+        <span class="totalCoins">{{ amountCoinsPlaced }}</span>
     </div>
 </div>

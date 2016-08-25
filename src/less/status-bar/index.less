@@ -13,13 +13,29 @@
         background-image: url('/images/pirate_coin_icon.png');
         background-position: left;
         background-repeat:no-repeat;
-        padding-left: 35px;
+        padding-left: 40px;
+
+        .collectedCoins, .separator {
+            font-size: 3rem;
+        }
+        .collectedCoins {
+            margin-left:2px;
+            font-weight: bold;
+        }
+        .totalCoins {
+            font-size: 1.5rem;
+        }
+        .separator {
+            margin-left: -0.5rem;
+            margin-right: -0.5rem;
+        }
     }
     .icon {
         background-image:url('/images/swords_icon.png');
         width: 34px;
         height: 37px;
         float:left;
+        margin-top:8px;
     }
     .time {
         margin: auto;
@@ -30,6 +46,7 @@
         position: absolute;
         text-align:center;
         font-size: 3rem;
+        margin-top:8px;
         .timer-icon {
             display:inline-block;
             background-size:100%;
@@ -39,5 +56,6 @@
             height:28px;
         }
     }
+
 
 }
