@@ -55,7 +55,6 @@ var vm = new Vue({
             this.updatePosition(
                 this._checkNearBy.bind()
             );
-            store.dispatch('GAMESTART');
         },
         methods: {
             _distributeCoins() {

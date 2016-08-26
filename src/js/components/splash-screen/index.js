@@ -1,4 +1,5 @@
 import template from './template.html';
+import store from './../../vuex/store.js';
 
 export default {
     name: 'splash-screen',
@@ -7,18 +8,20 @@ export default {
     },
     vuex: {
         getters: {
-
+            gameState: function (state) {
+                return state.gameState;
+            }
         }
     },
     methods: {
-        restartGame: function () {
-
+        startGame: function () {
+            this.$root.$refs.statusbar.$refs.timer.start();
+            store.dispatch('GAMESTART');
         }
     },
     computed: {
         show() {
-            return true;
-            // return gameState == 'SPLASH';
+            return this.gameState == 'INITIAL';
         }
     }
 }

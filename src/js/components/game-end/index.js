@@ -22,7 +22,7 @@ export default {
     },
     computed: {
         show() {
-            return gameState == 'END';
+            return this.gameState == 'END';
         }
     }
 }
