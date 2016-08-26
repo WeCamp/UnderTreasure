@@ -1,12 +1,11 @@
 <html>
-<head>
-    <link href="/css/underPressure.css" rel="stylesheet" type="text/css"/>
-</head>
-<body>
-    <!-- Header -->
-    <status-bar></status-bar>
-    <div class="position-marker">
-        <img src="/images/pirate_logo.png" /></div>
+  <head>
+    <link href="/css/underPressure.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <game-end></game-end>
+    <status-bar v-ref:statusbar></status-bar>
+    <div class="position-marker"></div>
 
     <!-- Map -->
     <pirate-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
@@ -42,21 +41,21 @@
                 v-for="whiteTipi in whiteTipis"
                 :position.sync="whiteTipi"
                 :clickable.sync="false"
-                :draggable.sync="true"
+                :draggable.sync="false"
                 :icon.sync="{url: '/images/white-tipi.png'}"
         ></marker>
         <marker
                 v-for="orangeTipi in orangeTipis"
                 :position.sync="orangeTipi"
                 :clickable.sync="false"
-                :draggable.sync="true"
+                :draggable.sync="false"
                 :icon.sync="{url: '/images/orange-tipi.png'}"
         ></marker>
         <marker
                 v-for="largeTipi in largeTipis"
                 :position.sync="largeTipi"
                 :clickable.sync="false"
-                :draggable.sync="true"
+                :draggable.sync="false"
                 :icon.sync="{url: '/images/large-tipi.png'}"
         ></marker>
 
