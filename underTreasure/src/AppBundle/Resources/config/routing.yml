@@ -1,0 +1,3 @@
+highscore:
+  type: rest
+  resource: AppBundle\Controller\HighscoreController
