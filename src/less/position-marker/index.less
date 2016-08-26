@@ -1,13 +1,18 @@
 .position-marker {
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  position: absolute;
-  background-color: black;
-  left: 50%;
-  top: 50%;
-  margin-top: -5px;
-  margin-left: -5px;
+    @width: 8rem;
+    @height: 8rem;
+    width: @width;
+    height: 10px;
+    border-radius: 5px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -(@width / 2);
+    margin-left: -(@width / 2);
 
-  z-index: 500;
+    z-index: 500;
+
+    img {
+        width: @width;
+    }
 }
