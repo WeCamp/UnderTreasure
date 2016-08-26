@@ -9,7 +9,7 @@ import Coin from './objects/coin.js';
 import {map as PirateMap, GroundOverlay} from './components/pirate-map';
 import StatusBar from './components/status-bar';
 import GameEnd from './components/game-end';
-
+import SplashScreen from './components/splash-screen';
 
 require("../less/index.less");
 
@@ -102,7 +102,8 @@ var vm = new Vue({
             'pirate-map': Map,
             Marker,
             GameEnd,
-            GroundOverlay
+            GroundOverlay,
+            SplashScreen
         },
         vuex: {
             getters: {
