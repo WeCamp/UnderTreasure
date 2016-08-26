@@ -1,6 +1,7 @@
 AppBundle\Entity\Highscore:
   type: entity
   table: highscore
+  repositoryClass: AppBundle\Repository\HighscoreRepository
   id:
     id:
       type: integer

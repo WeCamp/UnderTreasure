@@ -46,4 +46,52 @@ class Highscore
 	{
 		$this->id = $id;
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getUsername()
+	{
+		return $this->username;
+	}
+
+	/**
+	 * @param string $username
+	 */
+	public function setUsername($username)
+	{
+		$this->username = $username;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getTime()
+	{
+		return $this->time;
+	}
+
+	/**
+	 * @param int $time
+	 */
+	public function setTime($time)
+	{
+		$this->time = $time;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getCoins()
+	{
+		return $this->coins;
+	}
+
+	/**
+	 * @param int $coins
+	 */
+	public function setCoins($coins)
+	{
+		$this->coins = $coins;
+	}
 }
