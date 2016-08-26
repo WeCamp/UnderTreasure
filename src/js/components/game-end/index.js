@@ -22,7 +22,6 @@ export default {
     },
     computed: {
         show() {
-            return true;
             return gameState == 'END';
         }
     }

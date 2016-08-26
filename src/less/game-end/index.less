@@ -1,21 +1,20 @@
 .gameend {
+  @width: 374px;
+  @top: 300px;
+  box-sizing: content-box;
   z-index: 100001;
   position: absolute;
-  margin: auto;
-  width: 50%;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  height: 50%;
-
+  width: @width;
+  top: @top;
+  left: 50%;
+  margin-top: -(@top / 2);
+  margin-left: -(@width / 2);
+  height: 360px;
   background-image: url('/images/topbar_background.png');
-  max-width: 374px;
   padding: 20px;
-  font-size: 6rem;
+  font-size: 4rem;
   color: white;
   text-align: center;
-  max-height: 600px;
 
   .logo {
     display: block;
@@ -31,23 +30,22 @@
     display: block;
     text-align: center;
     padding: 10px;
-    margin-top: 20px;
-    margin-bottom: 20px;
     width: 100%;
     color: white;
-    font-size: 3rem;
+    font-size: 2rem;
   }
   .tagline {
-    font-size: 3rem;
+    font-size: 2rem;
+    padding:10px;
   }
   button {
     background: transparent;
-    font-size: 4rem;
+    font-size: 3rem;
     font-weight: 300;
     color: white;
     padding: 10px 30px;
     border: 4px solid white;
     cursor: hand;
-
+    margin-top:20px;
   }
 }
