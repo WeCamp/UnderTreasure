@@ -1,16 +1,16 @@
 .gameend {
-  @width: 374px;
-  @top: 300px;
+  @width: 100%;
+  @height: 400px;
   @padding: 20px;
-  box-sizing: content-box;
+  box-sizing: border-box;
   z-index: 100001;
   position: absolute;
   width: @width;
-  top: @top;
+  top: 50%;
   left: 50%;
-  margin-top: -(@top / 2);
-  margin-left: -(@width / 2) - @padding;
-  height: 360px;
+  margin-top: -(@height / 2) + 20px;
+  margin-left: -(@width / 2);
+  height: @height;
   background-image: url('/images/topbar_background.png');
   padding: @padding;
   font-size: 4rem;
@@ -44,9 +44,9 @@
     font-size: 3rem;
     font-weight: 300;
     color: white;
-    padding: 10px 30px;
+    padding: 10px 25px;
     border: 4px solid white;
     cursor: hand;
-    margin-top:20px;
+    margin-top:10px;
   }
 }
