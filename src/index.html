@@ -7,6 +7,7 @@
     <div class="position-marker"></div>
     <pirate-map style="width: 100%; height: 100%; position: absolute; left:0; top:0"
               :center.sync="{lat: user.position.coords.latitude, lng: user.position.coords.longitude}"
+              :heading="user.position.coords.heading"
               :zoom.sync="20"
               :options="{draggable: false, zoomControl: false, scrollwheel: false, disableDoubleClickZoom: true, streetViewControl: false}"
     >
