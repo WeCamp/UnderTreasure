@@ -10,7 +10,7 @@ import coinLocationSeeds from './objects/coinLocationSeeds.js';
 import {map as PirateMap, GroundOverlay} from './components/pirate-map';
 import StatusBar from './components/status-bar';
 import GameEnd from './components/game-end';
-
+import SplashScreen from './components/splash-screen';
 
 require("../less/index.less");
 
@@ -56,7 +56,6 @@ var vm = new Vue({
             this.updatePosition(
                 this._checkNearBy.bind()
             );
-            store.dispatch('GAMESTART');
         },
         methods: {
             _distributeCoins() {
@@ -92,7 +91,8 @@ var vm = new Vue({
             'pirate-map': Map,
             Marker,
             GameEnd,
-            GroundOverlay
+            GroundOverlay,
+            SplashScreen
         },
         vuex: {
             getters: {
