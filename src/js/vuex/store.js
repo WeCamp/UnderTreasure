@@ -5,10 +5,19 @@ import User from '../objects/user.js'
 
 Vue.use(Vuex);
 
+const initialState = {
+    user: new User(),
+    amountCoinsPlaced: 0,
+    coins: [],
+    timeValue: '00:00:00',
+    gameState: 'INITIAL' // INITIAL | RUNNING | END
+};
+
 const state = {
     user: new User(),
     amountCoinsPlaced: 0,
     coins: [],
+    timeValue: '00:00:00',
     gameState: 'INITIAL' // INITIAL | RUNNING | END
 };
 
@@ -28,8 +37,9 @@ const mutations = {
     GAMESTART (state) {
         state.gameState = 'RUNNING';
     },
-    GAMESTOP (state) {
+    GAMESTOP (state, timeValue) {
         state.gameState = 'END';
+        state.timeValue = timeValue;
     }
 };
 

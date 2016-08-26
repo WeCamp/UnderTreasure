@@ -8,6 +8,7 @@ import Coin from './objects/coin.js';
 
 import {map as PirateMap, GroundOverlay} from './components/pirate-map';
 import StatusBar from './components/status-bar';
+import GameEnd from './components/game-end';
 
 
 require("../less/index.less");
@@ -98,6 +99,7 @@ var vm = new Vue({
             StatusBar,
             'pirate-map': Map,
             Marker,
+            GameEnd,
             GroundOverlay
         },
         vuex: {
@@ -124,7 +126,7 @@ var vm = new Vue({
                 grabCoin: function({ dispatch, state }, coin) {
                     dispatch('GRABCOIN', coin);
                     if (state.coins.length == 0) {
-                        dispatch('GAMESTOP');
+                        dispatch('GAMESTOP', this.$refs.statusbar.$refs.timer.timeValue);
                     }
                 }
             }
