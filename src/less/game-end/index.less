@@ -1,0 +1,51 @@
+.gameend {
+  @width: 374px;
+  @top: 300px;
+  box-sizing: content-box;
+  z-index: 100001;
+  position: absolute;
+  width: @width;
+  top: @top;
+  left: 50%;
+  margin-top: -(@top / 2);
+  margin-left: -(@width / 2);
+  height: 360px;
+  background-image: url('/images/topbar_background.png');
+  padding: 20px;
+  font-size: 4rem;
+  color: white;
+  text-align: center;
+
+  .logo {
+    display: block;
+    margin: 0 auto;
+    background-image: url('/images/swords_icon.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 65px;
+  }
+
+  .titleline, .tagline {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    color: white;
+    font-size: 2rem;
+  }
+  .tagline {
+    font-size: 2rem;
+    padding:10px;
+  }
+  button {
+    background: transparent;
+    font-size: 3rem;
+    font-weight: 300;
+    color: white;
+    padding: 10px 30px;
+    border: 4px solid white;
+    cursor: hand;
+    margin-top:20px;
+  }
+}

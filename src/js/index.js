@@ -8,6 +8,7 @@ import Coin from './objects/coin.js';
 
 import {map as PirateMap, GroundOverlay} from './components/pirate-map';
 import StatusBar from './components/status-bar';
+import GameEnd from './components/game-end';
 
 
 require("../less/index.less");
@@ -24,24 +25,26 @@ var vm = new Vue({
         data() {
           return {
               whiteTipis: [
-                  {lat: 52.372057, lng: 5.633175}, //
-                  {lat: 52.372827, lng: 5.635914}, //
-                  {lat: 52.372679, lng: 5.635952}, //
-                  {lat: 52.372717, lng: 5.636048}, //
-                  {lat: 52.372827, lng: 5.635914}, //
-                  {lat: 52.372176, lng: 5.634565}, //
-                  {lat: 52.371923, lng: 5.634057}, //
-                  {lat: 52.372119, lng: 5.633643}, //
-                  {lat: 52.372024, lng: 5.633016}, //
-                  {lat: 52.371920, lng: 5.633212}, //
-                  {lat: 52.371838, lng: 5.633232}, //
-                  {lat: 52.371776, lng: 5.633310}, //
+                  {lat: 52.37275, lng: 5.635222}, // 1
+                  {lat: 52.37257, lng: 5.63536},  // 2
+                  {lat: 52.37250, lng: 5.63515},  // 3
+                  {lat: 52.37259, lng: 5.63472},  // 4
+                  {lat: 52.37204726781994, lng: 5.6342494454384},   // 5
+                  {lat: 52.37185239615258, lng: 5.633969330024684},   // 6
+                  {lat: 52.372142468810594, lng: 5.633514081020394},   // 7
+                  {lat: 52.37209334168643, lng: 5.632847552080193}, // 8
+                  {lat: 52.3720, lng: 5.63327},   // 9
+                  {lat: 52.371891919906105, lng: 5.633471165676156},   // 10
+                  {lat: 52.37166395389991, lng: 5.633515688152329}, // 11
+                  {lat: 52.371571430101575, lng: 5.633197846384064}, // 12
+                  {lat: 52.37174501441349, lng: 5.633217962951676} // 13
               ],
               orangeTipis: [
-                  {lat: 52.372181, lng: 5.633914}
+                  {lat: 52.37222030162571, lng: 5.633742338623051}
               ],
               largeTipis: [
-                  {lat: 52.372428, lng: 5.633794}
+                  {lat: 52.37254917922258, lng: 5.633796682208981},
+                  {lat: 52.37199515366008, lng: 5.63406490311047}
               ]
           };
 
@@ -98,6 +101,7 @@ var vm = new Vue({
             StatusBar,
             'pirate-map': Map,
             Marker,
+            GameEnd,
             GroundOverlay
         },
         vuex: {
@@ -124,7 +128,7 @@ var vm = new Vue({
                 grabCoin: function({ dispatch, state }, coin) {
                     dispatch('GRABCOIN', coin);
                     if (state.coins.length == 0) {
-                        dispatch('GAMESTOP');
+                        dispatch('GAMESTOP', this.$refs.statusbar.$refs.timer.timeValue);
                     }
                 }
             }

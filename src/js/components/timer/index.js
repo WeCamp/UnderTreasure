@@ -65,5 +65,19 @@ export default {
 				(minutes <= 9 ? '0' + minutes :  minutes) + ':' +
 				(seconds <= 9 ? '0' + seconds :  seconds);
 		}
-	}
+	},
+    vuex: {
+        getters: {
+            gameState: function (state) {
+                return state.gameState
+            }
+        }
+    },
+    watch: {
+        'gameState': function(value) {
+            if (value == 'END') {
+                this.stop();
+            }
+        }
+    },
 }
