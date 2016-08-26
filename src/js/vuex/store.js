@@ -22,6 +22,9 @@ const mutations = {
         state.amountCoinsPlaced++;
     },
     GRABCOIN (state, coin) {
+        if (state.gameState != 'RUNNING') {
+            return;
+        }
         let i = state.coins.indexOf(coin);
         state.coins.splice(i,1);
         state.user.coins.push(coin);
