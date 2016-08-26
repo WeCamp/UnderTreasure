@@ -1,6 +1,7 @@
 .gameend {
   @width: 374px;
   @top: 300px;
+  @padding: 20px;
   box-sizing: content-box;
   z-index: 100001;
   position: absolute;
@@ -8,10 +9,10 @@
   top: @top;
   left: 50%;
   margin-top: -(@top / 2);
-  margin-left: -(@width / 2);
+  margin-left: -(@width / 2) - @padding;
   height: 360px;
   background-image: url('/images/topbar_background.png');
-  padding: 20px;
+  padding: @padding;
   font-size: 4rem;
   color: white;
   text-align: center;
