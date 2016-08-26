@@ -5,26 +5,28 @@ export default {
     template,
     data() {
         return {
-            seconds: 0
+            seconds: 0,
+            minutes: 0,
+            hours: 0,
         }
     },
     created() {
-        this.start()
+        this.start();
+        this.seconds = 0;
+        this.minutes = 0;
+        this.hours = 0;
     },
     computed: {
         timeValue: function () {
-            let seconds = this.seconds;
-            let minutes = 0;
-            let hours = 0;
-            if (seconds >= 60) {
-                seconds = seconds % 60;
-                minutes++;
-                if (minutes >= 60) {
-                    minutes = minutes % 60;
-                    hours++;
+            if (this.seconds >= 60) {
+                this.seconds %= 60;
+                this.minutes++;
+                if (this.minutes >= 60) {
+                    this.minutes %= 60;
+                    this.hours++;
                 }
             }
-            return this.builtTimeView(hours, minutes, seconds);
+            return this.builtTimeView(this.hours, this.minutes, this.seconds);
         }
     },
     methods: {
