@@ -2,12 +2,13 @@ import Vue from 'vue';
 import store from './vuex/store';
 import {calculateDistance} from './vuex/actions.js'
 
-import {load, Marker} from 'vue-google-maps';
+import {load, Map, Marker} from 'vue-google-maps';
 
 import Coin from './objects/coin.js';
 
-import PirateMap from './components/pirate-map';
+import {map as PirateMap, GroundOverlay} from './components/pirate-map';
 import StatusBar from './components/status-bar';
+
 
 require("../less/index.less");
 
@@ -20,7 +21,33 @@ load({
 var vm = new Vue({
         el: 'body',
         store,
+        data() {
+          return {
+              whiteTipis: [
+                  {lat: 52.372057, lng: 5.633175}, //
+                  {lat: 52.372827, lng: 5.635914}, //
+                  {lat: 52.372679, lng: 5.635952}, //
+                  {lat: 52.372717, lng: 5.636048}, //
+                  {lat: 52.372827, lng: 5.635914}, //
+                  {lat: 52.372176, lng: 5.634565}, //
+                  {lat: 52.371923, lng: 5.634057}, //
+                  {lat: 52.372119, lng: 5.633643}, //
+                  {lat: 52.372024, lng: 5.633016}, //
+                  {lat: 52.371920, lng: 5.633212}, //
+                  {lat: 52.371838, lng: 5.633232}, //
+                  {lat: 52.371776, lng: 5.633310}, //
+              ],
+              orangeTipis: [
+                  {lat: 52.372181, lng: 5.633914}
+              ],
+              largeTipis: [
+                  {lat: 52.372428, lng: 5.633794}
+              ]
+          };
+
+        },
         created() {
+            this._applyMapOverlay();
             this._distributeCoins();
             this.updatePosition(
                 this._checkNearBy.bind()
@@ -61,12 +88,17 @@ var vm = new Vue({
                 coins.forEach((coin) => {
                     this.grabCoin(coin);
                 });
+            },
+            
+            _applyMapOverlay: function() {
+
             }
         },
         components: {
             StatusBar,
-            PirateMap,
-            Marker
+            'pirate-map': Map,
+            Marker,
+            GroundOverlay
         },
         vuex: {
             getters: {
