@@ -5,6 +5,7 @@ import {calculateDistance} from './vuex/actions.js'
 import {load, Map, Marker} from 'vue-google-maps';
 
 import Coin from './objects/coin.js';
+import coinLocationSeeds from './objects/coinLocationSeeds.js';
 
 import {map as PirateMap, GroundOverlay} from './components/pirate-map';
 import StatusBar from './components/status-bar';
@@ -59,18 +60,7 @@ var vm = new Vue({
         },
         methods: {
             _distributeCoins() {
-                [
-                    [52.371835, 5.632959],
-                    [52.371762, 5.634245],
-                    [52.372219, 5.634683],
-                    [52.372586, 5.634458],
-                    [52.372219, 5.635045],
-                    [52.372992, 5.635206],
-                    [52.372461, 5.634809],
-                    [52.372199, 5.635227],
-                    [52.372926, 5.635324],
-                    [52.371662, 5.634895]
-                ].forEach((data) => {
+                _.sample(coinLocationSeeds, 10).forEach((data) => {
                     let coin = new Coin(data[0], data[1]);
                     store.dispatch('ADDCOIN', coin);
                 })
