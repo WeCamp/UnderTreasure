@@ -1,7 +1,8 @@
 import template from './template.html';
+import store from './../../vuex/store.js';
 
 export default {
-    name: 'game-end',
+    name: 'splash-screen',
     template,
     components: {
     },
@@ -9,20 +10,18 @@ export default {
         getters: {
             gameState: function (state) {
                 return state.gameState;
-            },
-            timeValue: function(state) {
-                return state.timeValue;
             }
         }
     },
     methods: {
-        restartGame: function () {
-            window.location.reload(true);
+        startGame: function () {
+            this.$root.$refs.statusbar.$refs.timer.start();
+            store.dispatch('GAMESTART');
         }
     },
     computed: {
         show() {
-            return this.gameState == 'END';
+            return this.gameState == 'INITIAL';
         }
     }
 }

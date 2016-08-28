@@ -11,7 +11,6 @@ export default {
         }
     },
     created() {
-        this.start();
         this.seconds = 0;
         this.minutes = 0;
         this.hours = 0;
@@ -63,7 +62,7 @@ export default {
 		 * @returns {string}
 		 */
 		builtTimeView(hours, minutes, seconds){
-			return (hours <= 9 ? '0' + hours :  hours) + ':' +
+			return '' +
 				(minutes <= 9 ? '0' + minutes :  minutes) + ':' +
 				(seconds <= 9 ? '0' + seconds :  seconds);
 		}

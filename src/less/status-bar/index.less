@@ -1,5 +1,5 @@
 .statusbar {
-    box-sizing: content-box;
+    box-sizing: border-box;
     width: 100%;
     z-index: 1000;
     position: absolute;
@@ -10,21 +10,25 @@
 
     .totals {
         float: right;
-        padding-right: 2rem;
+        padding-top: 7px;
         background-image: url('/images/pirate_coin_icon.png');
+        background-size: 35px 35px;
         background-position: left;
         background-repeat:no-repeat;
         padding-left: 40px;
+        height: 35px;
 
-        .collectedCoins, .separator {
-            font-size: 3rem;
+        .separator {
+            font-size: 1.5rem;
         }
         .collectedCoins {
+            letter-spacing: -2px;
+            font-size: 2rem;
             margin-left:2px;
             font-weight: bold;
         }
         .totalCoins {
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
         .separator {
             margin-left: -0.5rem;
@@ -33,22 +37,26 @@
     }
     .icon {
         background-image:url('/images/swords_icon.png');
-        width: 34px;
+        width: 37px;
         height: 37px;
         float:left;
-        margin-top:8px;
+        margin-top: 4px;
+        background-size: 37px 37px;
     }
     .time {
-        margin: auto;
         top: 0;
         left: 0;
         bottom: 0;
         right: 0;
         position: absolute;
         text-align:center;
-        font-size: 3rem;
-        margin-top:8px;
+        font-size: 2rem;
+        margin-top: 16px;
+        margin-left: -35px;
+
         .timer-icon {
+            vertical-align: middle;
+            margin-top: -5px;
             display:inline-block;
             background-size:100%;
             background-repeat:no-repeat;

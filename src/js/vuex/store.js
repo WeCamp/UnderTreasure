@@ -5,14 +5,6 @@ import User from '../objects/user.js'
 
 Vue.use(Vuex);
 
-const initialState = {
-    user: new User(),
-    amountCoinsPlaced: 0,
-    coins: [],
-    timeValue: '00:00:00',
-    gameState: 'INITIAL' // INITIAL | RUNNING | END
-};
-
 const state = {
     user: new User(),
     amountCoinsPlaced: 0,
@@ -30,6 +22,9 @@ const mutations = {
         state.amountCoinsPlaced++;
     },
     GRABCOIN (state, coin) {
+        if (state.gameState != 'RUNNING') {
+            return;
+        }
         let i = state.coins.indexOf(coin);
         state.coins.splice(i,1);
         state.user.coins.push(coin);

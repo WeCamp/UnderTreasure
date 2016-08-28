@@ -1,0 +1,45 @@
+.splashscreen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: #8BB9F0;
+  box-sizing: content-box;
+
+
+  .logo {
+    margin-top: 80px;
+    margin-bottom: 10px;
+    text-align: center;
+    img {
+      width: 40%;
+      max-width: 200px;
+    }
+  }
+
+  .logo-text {
+    text-align: center;
+    img {
+        @width: 80%;
+        width: @width;
+        max-width: 300px;
+    }
+  }
+    button {
+      @width: 200px;
+      background: transparent;
+      font-size: 3rem;
+      color: white;
+      padding: 10px 30px;
+      border: 4px solid white;
+      cursor: hand;
+      margin-top:20px;
+      position: absolute;
+      left: 50%;
+      bottom: 50px;
+      width: @width;
+      margin-left: -(@width / 2);
+    }
+}
